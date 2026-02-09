@@ -29,7 +29,7 @@ YELL='\033[0;33m'
  clear
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/Jos-vpn-store/jp/main/register > /root/tmp
+    curl -sS https://raw.githubusercontent.com/jsvipp/izin/main/ip > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -47,7 +47,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/Jos-vpn-store/jp/main/register | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/jsvipp/izin/main/ip | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -64,7 +64,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/Jos-vpn-store/jp/main/register | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jsvipp/izin/main/ip | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -82,7 +82,7 @@ PERMISSION
 if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
 else
-Exp=$(curl -sS https://raw.githubusercontent.com/Jos-vpn-store/jp/main/register | grep $MYIP | awk '{print $3}')
+Exp=$(curl -sS https://raw.githubusercontent.com/jsvipp/izin/main/ip | grep $MYIP | awk '{print $3}')
 fi
 
 BIBlack='\033[1;90m'      # Black
@@ -284,7 +284,7 @@ echo -e "  ${z}│ [${r}02${NC}] ${z}VMESS  MENU  ${NC}       ""[${r}08${NC}] ${
 echo -e "  ${z}│ [${r}03${NC}] ${z}VLESS  MENU  ${NC}       ""[${r}09${NC}] ${z}BACKUP & RESTORE   ${NC}"
 echo -e "  ${z}│ [${r}04${NC}] ${z}TROJAN MENU  ${NC}       ""[${r}10${NC}] ${z}INSTALL UDP        ${NC}"
 echo -e "  ${z}│ [${r}05${NC}] ${z}SETING MENU  ${NC}       ""[${r}11${NC}] ${z}ADD DOMAIN         ${NC}"        
-echo -e "  ${z}│ [${r}06${NC}] ${z}UPDATE SCRIPT${NC}       ""[${r}12${NC}] ${z}ZIP VPN      ${NC}"
+echo -e "  ${z}│ [${r}06${NC}] ${z}UPDATE SCRIPT${NC}       ""[${r}12${NC}] ${z}KELUAR SCRIPT      ${NC}"
 echo -e "  ${z}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\033[0m${NC}"
 echo -e "${z}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\033[0m${NC}" 
 echo -e "${z}│${IWhite}HARI ini =${NC}${r} $ttoday${NC} ${IWhite}KEMARIN =${NC}${r} $tyest${NC} ${IWhite}BULAN =${NC}${r} $tmon${NC}"
@@ -307,7 +307,7 @@ case $opt in
 7) clear ; running ;;
 8) clear ; nano /etc/issue.net ;;
 9) clear ; menu-backup ;;
-10) clear ; sudo wget -O /usr/local/bin/zi.sh https://raw.githubusercontent.com/leryyvpn/udp-zivpn/main/zi.sh && sudo chmod +x /usr/local/bin/zi.sh && sudo zi.sh ;;
+10) clear ; wget --load-cookies /tmp/cookies.txt ${UDPX} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
 11) clear ; add-host ;; 
-12) zivpn ;;
+12) exit ;;
 esac

@@ -15,7 +15,7 @@ echo -e "\e[32mloading...\e[0m"
 clear
 IP=$(wget -qO- icanhazip.com)
 dateToday=$(date +"%Y-%m-%d")
-USRSC=$(curl -sS https://https://raw.githubusercontent.com/Jos-vpn-store/instalasi/main/register | grep $MYIP | awk '{print $2}')
+USRSC=$(curl -sS https://https://raw.githubusercontent.com/jsvipp/izin/main/ip | grep $MYIP | awk '{print $2}')
 
 setup_bot() {
     switch=$(grep -i "switch" /root/.bckupbot | awk '{print $2}')
